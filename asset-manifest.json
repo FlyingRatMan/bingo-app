@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/bingo-app/static/css/main.3d5d5960.css",
+    "main.js": "/bingo-app/static/js/main.f6531e3d.js",
+    "index.html": "/bingo-app/index.html",
+    "main.3d5d5960.css.map": "/bingo-app/static/css/main.3d5d5960.css.map",
+    "main.f6531e3d.js.map": "/bingo-app/static/js/main.f6531e3d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3d5d5960.css",
+    "static/js/main.f6531e3d.js"
+  ]
+}
