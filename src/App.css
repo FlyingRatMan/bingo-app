@@ -3,12 +3,18 @@
   margin: 0;
 }
 
-body,
-#root {
+body {
   height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #FFDEE9;
 }
 
 #root {
+  height: 100%;
   display: flex;
   align-content: center;
+}
+
+.container {
+  margin: auto;
 }

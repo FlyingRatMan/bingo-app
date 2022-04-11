@@ -6,6 +6,9 @@ const niceWords = ['accepting', 'admirable', 'adorable', 'amazing', 'attractive'
     'enthusiastic', 'fantastic', 'friendly', 'funny', 'generous', 'giving', 'gorgeous', 'grateful', 'happy', 'hilarious',
     'incredible', 'inspiring', 'intelligent', 'kind', 'lovely', 'loyal', 'magnificent', 'motivated', 'patient'];
 
+let checkedLeft = false;
+let checkedRight = false;
+
 export const cellsSlice = createSlice({
     name: 'matrix',
     initialState: {
@@ -39,31 +42,56 @@ export const cellsSlice = createSlice({
         },
         checkAdjacent: (state, action) => {
             const {rowIndex, colIndex} = action.payload;
-            let winCountVert = 0;
-            let winCountDiag = 0;
+            let vertCount = 0;
+            let leftDiagonal = 0;
+            let rightDiagonal = 0;
 
-            // vertical check
             for (let i = 0; i < 5; i++) {
+                // vertical check
                 if (state.matrix[i][colIndex].status) {
-                    winCountVert++;
-                }
-                if (state.matrix[i][i].status) {
-                    winCountDiag++;
+                    vertCount++;
                 }
 
-                if (winCountVert === 5 || winCountDiag === 5) {
-                    state.isWon = !state.isWon;
+                // diagonal check
+                if (state.matrix[i][i].status && !checkedLeft) {
+                    leftDiagonal++;
+                }
+                if (state.matrix[4 - i][i].status && !checkedRight) {
+                    rightDiagonal++;
                 }
             }
 
             // horizontal check
             if (state.matrix[rowIndex].every(cell => cell.status)) {
-                state.isWon = !state.isWon;
+                state.isWon = true;
             }
-        }
+
+            if (vertCount === 5) {
+                state.isWon = true;
+            }
+            if (leftDiagonal === 5) {
+                state.isWon = true;
+                checkedLeft = true;
+            }
+            if (rightDiagonal === 5) {
+                state.isWon = true;
+                checkedRight = true;
+            }
+        },
+        reset: state => {
+            state.isWon = false;
+        },
     },
 });
 
-export const {fillCells, check, checkAdjacent} = cellsSlice.actions;
+export const {fillCells, check, checkAdjacent, reset} = cellsSlice.actions;
 
 export default cellsSlice.reducer;
+
+// if (state.matrix[i][i].status) {
+//
+// }
+//
+// if (winCountVert === 5 || winCountDiag === 5) {
+//     state.isWon = !state.isWon;
+// }

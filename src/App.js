@@ -3,7 +3,9 @@ import BingoBoard from './components/board/BingoBoard';
 
 function App() {
     return (
-        <BingoBoard/>
+        <div className={'container'}>
+            <BingoBoard/>
+        </div>
     );
 }
 

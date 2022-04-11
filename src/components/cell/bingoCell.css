@@ -1,4 +1,6 @@
 .cell {
+    min-height: 130px;
+    max-width: 130px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,6 +9,12 @@
     cursor: pointer;
     font-size: 1.3rem;
     font-style: italic;
+    overflow-wrap: anywhere;
+    text-align: center;
+}
+
+.cell p {
+    padding: 10px;
 }
 
 .checked {
@@ -19,8 +27,5 @@
 }
 
 @media screen and (max-width: 800px) {
-    .cell {
-        overflow-wrap: anywhere;
-        text-align: center;
-    }
+
 }
